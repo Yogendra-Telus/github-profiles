@@ -1,0 +1,99 @@
+.product-list {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: inline-block;
+}
+
+.product-table {
+  height: 50%;
+  width: 80%;
+  border: 1px solid black;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product-add-button {
+  text-align: left;
+  margin: 2% 0 0 10%;
+}
+
+.product-form {
+  height: 100%;
+  width: 100%;
+  margin: 1%;
+}
+
+.product-list-button {
+  margin: 2%;
+}
+
+.product-details-form {
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid black;
+  width: 800px;
+  padding: 2%;
+  border-radius: 6px;
+}
+
+.product-list-submit-button {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product-details-input {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 3px solid black;
+}
+
+.product-details-input:active {
+  text-decoration: none;
+
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+.product-details-header {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.product-table-body {
+  margin: 2% 0 0 0;
+}
+
+.product-filter {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.products-page-header {
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 34px;
+}
+
+.products-manager-body {
+  margin: 5% 0 0 0;
+}
+
+.products-filter-input {
+  width: 28%;
+}
+
+.user-link-style {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  z-index: 1;
+}
