@@ -28,13 +28,19 @@ const PAGE_SIZE = 10;
 const TOTAL_USER_COUNT = 24486303; // this data copied from github
 const GithubUsersList = (props) => {
   const [userList, setUserList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
   useEffect(() => {
-    getAllGithubUserList(pageNumber, PAGE_SIZE).then((respone) => {
-      if (respone.data) {
-        setUserList(respone.data);
-      }
-    });
+    setLoading(true);
+    getAllGithubUserList(pageNumber, PAGE_SIZE)
+      .then((respone) => {
+        if (respone.data) {
+          setUserList(respone.data);
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const Pagination = ({ current, ...props }) => {
@@ -42,12 +48,17 @@ const GithubUsersList = (props) => {
     if (current !== 1) {
       since = PAGE_SIZE * (current - 1);
     }
-    getAllGithubUserList(since, PAGE_SIZE).then((respone) => {
-      if (respone.data) {
-        setUserList(respone.data);
-        setPageNumber(current);
-      }
-    });
+    setLoading(true);
+    getAllGithubUserList(since, PAGE_SIZE)
+      .then((respone) => {
+        if (respone.data) {
+          setUserList(respone.data);
+          setPageNumber(current);
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleUserClick = ({ history }, row) => {
@@ -60,14 +71,14 @@ const GithubUsersList = (props) => {
 
   return (
     <div className="form-group">
-      <div>User list</div>
+      <div className="heading-style-github">Github User list</div>
       <div style={{ height: "90%", width: "90%" }}>
         <Table
+          loading={loading}
           pagination={
             ({ defaultCurrent: pageNumber }, { total: TOTAL_USER_COUNT })
           }
           footer={null}
-          scroll={{ x: 1600 }}
           columns={columns}
           onChange={Pagination}
           onRowClick={handleUserClick.bind(this, props)}
